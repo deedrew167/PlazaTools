@@ -1,0 +1,54 @@
+{
+	"manifest_version": 2,
+
+	"name": "PlazaTools",
+	"description": "PlazaTools is an extension that adds a bunch of new features to 3DSPlaza, such as notifications, shortcuts and more.",
+	"version": "2.0.0",
+
+	"icons": {
+		"19": "assets/icon19.png",
+		"38": "assets/icon38.png",
+		"48": "assets/icon48.png",
+		"128": "assets/icon128.png"
+	},
+
+	"browser_action": {
+		"default_icon": {
+			"19": "assets/icon19.png",
+			"38": "assets/icon38.png"
+		},
+		"default_popup": "ctrlPanel.html"
+	},
+
+	"background": {
+		"scripts": ["global.js", "background.js"]
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["http://pc.3dsplaza.com/chat3/chat.php?room=*"],
+			"css": ["inject/chat-parent.css"]
+		},
+		{
+			"matches": ["http://pc.3dsplaza.com/chat3/innerchat.php?room=*"],
+			"css": ["assets/global.css", "inject/chat.css"],
+			"js": ["global.js", "inject/chat.js"],
+			"all_frames": true
+		}
+	],
+
+	"web_accessible_resources": [
+		"assets/*",
+		"inject/*"
+	],
+
+	"permissions": [
+		"activeTab",
+		"tabs",
+		"storage",
+		"notifications",
+		"http://pc.3dsplaza.com/*",
+		"http://dsi.3dsplaza.com/*",
+		"http://3dsplaza.com/*"
+	]
+}

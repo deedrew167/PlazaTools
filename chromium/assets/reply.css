@@ -1,0 +1,23 @@
+body {
+	font-family: 'Raleway', sans-serif;
+	overflow: hidden;
+}
+
+#chatScreen {
+	background: #fff;
+	border: solid 1px;
+	height: 200px;
+	margin: 0 0 5px 0;
+	overflow-y: scroll;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+#messageInput {
+	width: 410px;
+}
+
+#messageSend {
+	float: right;
+	width: 50px;
+}

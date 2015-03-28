@@ -1,0 +1,181 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:800,500);
+
+body {
+	width: 300px;
+	height: 250px;
+	margin: 0;
+	font-family: 'Raleway', sans-serif;
+	font-size: 10px;
+	overflow: hidden;
+}
+
+#container {
+	width: 100%;
+	height: calc(100% - 16px);
+	background: #34495e;
+	border-radius: 0 3px 3px 3px;
+	box-sizing: border-box;
+	color: #fff;
+	overflow-y: scroll;
+	padding: 2px 4px;
+	position: absolute;
+	z-index: 1000;
+	text-align: center;
+}
+
+a {
+	color: #fff
+}
+
+#loader {
+	width: 64px;
+	height: 64px;
+	margin: 25%;
+	fill: #fff;
+}
+
+#tabAbout {
+	width: 255px;
+	margin: 0 auto;
+}
+
+#title {
+	margin: 0;
+	font-size: 3em;
+	color: #00ffff;
+}
+
+#changelog {
+	clear: both;
+	text-align: left;
+	margin: 25px 0;
+	color: #70FF66;
+	font-size: 11px;
+}
+
+#tabChat {
+	text-align: left;
+}
+
+input[type=checkbox] {
+	vertical-align: -3px;
+	cursor: pointer;
+}
+
+#chats input{
+	vertical-align: -4px;
+	width: 10px;
+	height: 10px;
+	margin: 2px 1px 2px 3px;
+}
+
+label {
+	cursor: pointer;
+	-webkit-user-select: none;
+}
+
+fieldset {
+	border: solid 1px rgba(0,0,0,.3);
+	border-radius: 3px;
+	box-shadow: inset 0 0 10px #2c3e50,inset 0 0 1px;
+	margin-bottom: 3px;
+}
+
+select {
+	-webkit-appearance: button;
+	background: none;
+	border: solid 1px rgba(0,0,0,.3);
+	border-radius: 4px;
+	box-shadow: inset 0 0 10px #2c3e50,inset 0 0 1px;
+	color: #fff;
+	font-size: 11px;
+	outline: 0;
+}
+
+#container option {
+	background: #34495E
+}
+
+textarea {
+	display: block;
+	background: none;
+	border: solid 1px rgba(0,0,0,.3);
+	border-radius: 4px;
+	color: #fff;
+	font-family: inherit;
+	font-size: inherit;
+	width: 256px;
+	height: 45px;
+	margin: 0;
+	margin: 2px 0;
+	outline: 0;
+	padding: 0 4px;
+	resize: vertical;
+	transition: box-shadow .25s ease;
+}
+
+textarea:hover {
+	border: solid 1px rgba(0,0,0,.2)
+}
+
+textarea:focus {
+	box-shadow: inset 0 0 10px #366576,inset 0 0 1px
+}
+
+#tabs {
+	width: 100%;
+}
+
+.tab {
+	position: relative;
+	background: #2c3e50;
+	border: solid #2c3e50;
+	border-radius: 2px 2px 0 0;
+	border-width: 1px 1px 0;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	margin: 0 -2px 0 0;
+	padding: 2px 5px;
+	transition: background .5s;
+}
+
+.tab.active {
+	background: #34495e
+}
+
+.tab.important:after {
+	content: '';
+	position: absolute;
+	top: -2px;
+	right: -4px;
+	width: 5px;
+	height: 5px;
+	background: red;
+	border: solid 1px;
+	border-radius: 50%;
+}
+
+#save {
+	position: absolute;
+	display: none;
+	top: 0px;
+	right: 0px;
+	background: #95a5a6;
+	border: solid #7f8c8d;
+	border-radius: 2px 2px 0 0;
+	border-width: 1px 1px 0;
+	color: #fff;
+	cursor: pointer;
+	padding: 2px 5px;
+	pointer-events: none;
+	text-shadow: 0 2px 1px #7f8c8d;
+	transition: background 1s,border-color 1s,text-shadow 1s;
+}
+
+#save.active {
+	background: #e74c3c;
+	border-color: #c0392b;
+	pointer-events: visible;
+	text-shadow: 0 2px 1px #c0392b;
+}
