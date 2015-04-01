@@ -3,7 +3,7 @@
 
 	"name": "PlazaTools",
 	"description": "PlazaTools is an extension that adds a bunch of new features to 3DSPlaza, such as notifications, shortcuts and more.",
-	"version": "2.0.0",
+	"version": "0.0.1",
 
 	"icons": {
 		"19": "assets/icon19.png",
@@ -50,5 +50,7 @@
 		"http://pc.3dsplaza.com/*",
 		"http://dsi.3dsplaza.com/*",
 		"http://3dsplaza.com/*"
-	]
+	],
+
+	"key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqx2TLR2OHR5irxBltQYMora0nOZX3wCDG4FZSnxF4gznUhYRCid4LvO1NIu+wti+xLC0cYM2s3Eo2BujzQyERjZbb6v3R3lm4M9t1xo0x8Ibdhlz8f0Bry9nZ8ZTdw1JA486IPKcpybc7FkwIUIfAsEZ8obiDhRBmGwPnOgYU6phgsKzCB++uw0LAsbei30GQJguO5z783Jb80gb/pgAHqfVlbpEZyQaj/4dhRtt/BKCyHTBhUeTkYDeO09+pV9r4ulHlrmalxuefpHVipeIjczLLFdasAgnptf3PBWM2338qRJw1MPeaxXdJ8M6S+j8xWeaHrfI+/PtnNde8Tss+QIDAQAB"
 }

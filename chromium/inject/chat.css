@@ -3,7 +3,7 @@
 	bottom: 11px;
 	right: 100px;
 	z-index: 1;
-	background: url(chrome-extension://logjdfndjcnbmfpoadnnmgkkkcbbkkig/assets/emoticonTileset.png);
+	background: url(chrome-extension://cdjbplpacpldcafeidjadgpkenijgldj/assets/emoticonTileset.png);
 	background-position: -1px -1px;
 	width: 15px;
 	height: 15px;
@@ -63,7 +63,7 @@
 
 .ptEmoticonSelectorEmoticon {
 	display: inline-block;
-	background: url(chrome-extension://logjdfndjcnbmfpoadnnmgkkkcbbkkig/assets/emoticonTileset.png);
+	background: url(chrome-extension://cdjbplpacpldcafeidjadgpkenijgldj/assets/emoticonTileset.png);
 	margin: 1px;
 	cursor: pointer;
 	transition: transform .1s ease-in;

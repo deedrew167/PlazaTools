@@ -35,11 +35,6 @@ chrome.storage.sync.get("settings", function(i){
 		});
 	});
 
-	// REMOVE THIS WHEN U GET THE ID
-	Array.prototype.forEach.call(document.querySelectorAll("#ptEmoticonSelectorButton, .ptEmoticonSelectorEmoticon"), function(el){
-		el.style.backgroundImage = "url(" + chrome.extension.getURL("/assets/emoticonTileset.png") + ")";
-	});
-
 	// inject the URL to hyperlink feature with a script tag because chrome won't allow me to change the prototype normally
 
 	// so ghetto huh :/
