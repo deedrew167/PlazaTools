@@ -1,5 +1,3 @@
-// ew, firefox
-
 var { ToggleButton } = require('sdk/ui/button/toggle'),
 	panels = require("sdk/panel"),
 	self = require("sdk/self"),

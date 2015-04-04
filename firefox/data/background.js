@@ -110,6 +110,8 @@ function checkChat(cr){
 
 			chatrooms[cr] = this.response.split('<!--s-->')[0];
 			var messages = this.response.split("<!--d-->").reverse();
+
+			messageLoop:
 			for(var m in messages){
 				var message = messages[m].match(/<\/b><\/span> (.*)<!---cmid:/) ? messages[m].match(/<\/b><\/span> (.*)<!---cmid:/)[1] : "",
 					messageSender = (
@@ -142,7 +144,7 @@ function checkChat(cr){
 						getAvatar(messageSender, {message: message, messageSender: messageSender, cr: cr}, function(storage, avatar){
 							createNotification(storage.messageSender +" mentioned you in Chatroom "+chatroomNames[storage.cr]+"!", storage.message, avatar, settings.chatNotifierTimeout, storage);
 						});
-						continue;
+						continue messageLoop;
 					}
 				}
 
