@@ -47,6 +47,7 @@ panel.port.on("saveSettings", function(sett) {
 	pageWorker.port.emit("settingsChange", sett);
 });
 
+/* chrome feature that wouldn't work on firefox, might work on it later
 tabs.on('ready', function(tab) {
 	chatTabExists = false;
 	for(var tab in tabs){
@@ -57,8 +58,7 @@ tabs.on('ready', function(tab) {
 	if(chatTabExists)
 		pageWorker.port.emit("tabOpen", tabs);
 });
-
-
+*/
 
 pageWorker.port.on("showNotif", function(data) {
 	notifications.notify(data);

@@ -13,7 +13,6 @@ var	chatrooms = {
 	soundPlayer.preload = "auto";
 
 function createNotification(title, content, icon, timeout, details) {
-	console.log("notification bruh " + details.toString());
 	var notifId = encodeURIComponent("pt_" + details.toString());
 
 	window["replyDetails_"+notifId] = {replyTo: details.messageSender, chatroom: details.cr};
@@ -213,11 +212,10 @@ for(var cr in chatrooms){
 
 	updateChatId(cr);
 }
-
+/* chrome feature that wouldn't work on firefox, might work on it later
 self.port.on("tabOpen", function(tabs) {
 	window.tabs = tabs;
 	tabChatrooms = [];
-	chatTabExists = false;
 	for(var tab in tabs){
 		if(tabs[tab].url.match(/http:\/\/pc.3dsplaza.com\/chat3\/(.*)chat.php?room=(.*)/)){
 			tabChatrooms.push(tabs[tab].url.match(/room=(.*)/)[1]);
@@ -225,3 +223,4 @@ self.port.on("tabOpen", function(tabs) {
 	}
 	onSettingsChange();
 });
+*/
