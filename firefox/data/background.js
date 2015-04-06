@@ -192,10 +192,6 @@ function onSettingsChange(){
 
 
 // initialization
-for (var sett in defaultSettings) {
-	if(!userSett.hasOwnProperty(sett)) userSett[sett] = defaultSettings[sett]; 
-};
-settings = userSett;
 tabs = self.options.tabs;
 
 for(var tab in tabs){

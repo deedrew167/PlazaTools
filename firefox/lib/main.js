@@ -4,6 +4,7 @@ var { ToggleButton } = require('sdk/ui/button/toggle'),
 	tabs = require("sdk/tabs"),
 	ss = require("sdk/simple-storage"),
 	notifications = require("sdk/notifications"),
+	pageMod = require("sdk/page-mod"),
 
 	button = ToggleButton({
 		id: "plazatools",
@@ -27,6 +28,18 @@ var { ToggleButton } = require('sdk/ui/button/toggle'),
 		contentScriptOptions: {userSett: ss.storage.settings, tabs: tabs},
 		contentScriptFile: [self.data.url("./global.js"), self.data.url("./background.js")],
 		contentURL: self.data.url("./background.html")
+	}),
+
+	chatInject = pageMod.PageMod({
+		include: "http://pc.3dsplaza.com/chat3/innerchat.php?room=*",
+		contentScriptOptions: {userSett: ss.storage.settings, tabs: tabs, resourceURI: {"emoticonTileset": self.data.url("./assets/emoticonTileset.png"), "chat-urltohyperlink": self.data.url("./inject/chat-urltohyperlink.js")}},
+		contentStyleFile: self.data.url("./inject/chat.css"),
+		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/chat.js")]
+	}),
+
+	chatParentInject = pageMod.PageMod({
+		include: "http://pc.3dsplaza.com/chat3/chat.php?room=*",
+		contentStyleFile: self.data.url("./inject/chat-parent.css"),
 	});
 
 function handleChange(state) {
