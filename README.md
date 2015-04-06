@@ -21,4 +21,4 @@ Firefox
 
 License
 ========
-PlazaTools is licensed under the <a href="http://opensource.org/licenses/MIT">MIT License</a>.
+This extension is licensed under the <a href="http://www.mozilla.org/MPL/2.0/">MPL 2.0</a>.
