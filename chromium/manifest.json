@@ -34,6 +34,10 @@
 			"css": ["assets/global.css", "inject/chat.css"],
 			"js": ["global.js", "inject/chat.js"],
 			"all_frames": true
+		},
+		{
+			"matches": ["http://pc.3dsplaza.com/forums/topic.php?topic=*"],
+			"js": ["global.js", "inject/forum-topic.js"]
 		}
 	],
 

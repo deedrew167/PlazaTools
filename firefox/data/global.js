@@ -1,6 +1,16 @@
 var $ = function(e) { return document.querySelector(e); },
 	$$ = function(e) { return document.querySelectorAll(e); },
-	defaultSettings = {"chatNotifier": true, "chatNotifierChatrooms": ["v3original"], "chatNotifierWhiteList": ["Your username here"], "chatNotifierSound": true, "chatNotifierWhisper": true, "chatNotifierInterval": 60, "chatURLToHyperlink": true, "chatImgurThumbnail": true},
+	defaultSettings = {
+		"chatNotifier": true,
+		"chatNotifierChatrooms": ["v3original"],
+		"chatNotifierWhiteList": ["Your username here"],
+		"chatNotifierSound": true,
+		"chatNotifierWhisper": true,
+		"chatNotifierInterval": 60,
+		"chatURLToHyperlink": true,
+		"chatImgurThumbnail": true,
+		"forumReplyButton": true
+	},
 	settings,
 	emoticons = {
 		"Faces": [

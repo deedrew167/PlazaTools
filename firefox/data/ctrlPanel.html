@@ -8,8 +8,8 @@
 	<body>
 		<div id="tabs">
 			<div class="tab" id="About">About</div>
-			<div class="tab" id="Chat">Chat</div><!--
-			<div class="tab" id="Forums">Forums</div>-->
+			<div class="tab" id="Chat">Chat</div>
+			<div class="tab" id="Forums">Forums</div>
 		</div>
 		<div id="save">Save changes</div>
 		<div id="container">
@@ -29,6 +29,7 @@
 					- Fixed notifications from the roleplay chat<br>
 					- Fixed emoticons not showing in notifications<br>
 					- Thumbnails on imgur links<br>
+					- Reply buttons on the forums<br>
 					- Replying through notifications<br>
 					- And other bug fixes<br><br>
 					<i>Do you have any suggestions / bug reports?<br>
@@ -45,30 +46,11 @@
 						<input type="checkbox" name="v3yellow" id="v3yellow"><label for="v3yellow" style="color:#FF0">Yellow</label>
 						<input type="checkbox" name="v3green" id="v3green"><label for="v3green" style="color:#0F0">Green</label>
 						<input type="checkbox" name="v3purple" id="v3purple"><label for="v3purple" style="color:#F0F">Purple</label>
-						<input type="checkbox" name="v3rp" id="v3rp"><label for="v3rp" style="color:#00F">Roleplay</label><!--<br>
-						Unselect all to only have notifications when a chat window is on-->
+						<input type="checkbox" name="v3rp" id="v3rp"><label for="v3rp" style="color:#00F">Roleplay</label>
 					</fieldset>
 					<label for="chatNotifierList" title="PlazaTools will notify you when a message in the chat matches a word in the box below.">Notify me when someone says one of these words in the chat: (seperate with a line break)</label>
 					<textarea name="chatNotifierList" id="chatNotifierList" spellcheck="false"></textarea>
-					<input type="checkbox" name="chatNotifierSound" id="chatNotifierSound"><label for="chatNotifierSound" title="If PlazaTools should make a sound effect whenever you get a notification.">Sound</label><!--
-					<div style="float:right">
-						<label for="chatNotifierTimeout" title="Set how long a notification should last.">Close notification in</label>
-						<select name="chatNotifierTimeout" id="chatNotifierTimeout">
-							<option value="5">5s</option>
-							<option value="10">10s</option>
-							<option value="15">15s</option>
-							<option value="20">20s</option>
-							<option value="25">25s</option>
-							<option value="30">30s</option>
-							<option value="60">1m</option>
-							<option value="120">2m</option>
-							<option value="180">3m</option>
-							<option value="240">4m</option>
-							<option value="300">5m</option>
-							<option value="600">10m</option>
-							<option value="&#8734;">&#8734;</option>
-						</select>
-					</div>--><br>
+					<input type="checkbox" name="chatNotifierSound" id="chatNotifierSound"><label for="chatNotifierSound" title="If PlazaTools should make a sound effect whenever you get a notification.">Sound</label><br>
 					<input type="checkbox" name="chatNotifierWhisper" id="chatNotifierWhisper"><label for="chatNotifierWhisper" title="Set if should PlazaTools notify you when someone whispers to you.">Notify on whisper</label>
 					<div style="float:right">
 						<label for="chatNotifierInterval" title="Set how long should PlazaTools wait until it checks for mentions/whispers. Low values not recommended for limited internet users. Doesn't affect chatrooms opened.">Check interval:</label>
@@ -91,7 +73,7 @@
 				<input type="checkbox" name="chatImgurThumbnail" id="chatImgurThumbnail"><label for="chatImgurThumbnail" title="Set if PlazaTools should show a thumbnail when you hover over an imgur link.">Imgur thumbnail on hover</label>
 			</div>
 			<div id="tabForums" style="display:none">
-				<h3 id="title"><br><br>Coming soon...</h3>
+				<input type="checkbox" name="forumReplyButton" id="forumReplyButton"><label for="forumReplyButton" title="Set if PlazaTools should add a reply button on thread comments.">Add a reply button to thread comments</label>
 			</div>
 		</div>
 	</body>

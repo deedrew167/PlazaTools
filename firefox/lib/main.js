@@ -40,6 +40,12 @@ var { ToggleButton } = require('sdk/ui/button/toggle'),
 	chatParentInject = pageMod.PageMod({
 		include: "http://pc.3dsplaza.com/chat3/chat.php?room=*",
 		contentStyleFile: self.data.url("./inject/chat-parent.css"),
+	}),
+
+	forumTopicInject = pageMod.PageMod({
+		include: "http://pc.3dsplaza.com/forums/topic.php?topic=*",
+		contentScriptOptions: {userSett: ss.storage.settings},
+		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/forum-topic.js")]
 	});
 
 function handleChange(state) {
