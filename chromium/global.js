@@ -21,6 +21,7 @@ var $ = function(e) { return document.querySelector(e); },
 			{"name": ":S", "width": 15, "height": 15, "pos": "-49px -17px", "html": '<img src="http://3dsplaza.com/global/chat3/i/icon_confused.gif" alt=":S">'},
 			//{"name": ":P", "width": 15, "height": 15, "pos": "-65px -17px"},
 			{"name": ":@", "width": 15, "height": 15, "pos": "-81px -17px", "html": '<img src="http://3dsplaza.com/global/chat3/i/icon_mad.gif" alt=":@">'},
+			{"name": "-_-&apos;", "width": 15, "height": 15, "pos": "-40px -53px", "html": '<img src="http://3dsplaza.com/chathnd/buy_sweat.png" alt="-_-\'">'},
 			{"name": ":O", "width": 16, "height": 16, "pos": "-1px -33px", "html": '<img src="http://3dsplaza.com/global/chat3/i/icon_amazed.gif" alt=":O">'},
 			{"name": "xD", "width": 16, "height": 16, "pos": "-18px -33px", "html": '<img src="http://3dsplaza.com/global/chat3/i/ecksdee.png" alt="xD">'},
 			{"name": ":fp:", "width": 19, "height": 19, "pos": "-35px -33px", "html": '<img src="http://3dsplaza.com/chathnd/icon_facepalm.gif" alt=":facepalm:">'},
@@ -42,10 +43,12 @@ var $ = function(e) { return document.querySelector(e); },
 			{"name": ":ydsay:", "width": 20, "height": 16, "pos": "-19px -94px", "html": '<img src="http://3dsplaza.com/chathnd/buy_youdontsay.png" alt=":ydsay:">'}
 		],
 		"Other": [
+			{"name": "@<3@", "width": 15, "height": 13, "pos": "-61px -114px", "html": '<img src="http://3dsplaza.com/chathnd/icon_bheart.gif" alt="[ !<3! ]">'},
 			{"name": ":yoshi:", "width": 16, "height": 16, "pos": "-1px -114px", "html": '<img src="http://3dsplaza.com/chathnd/buy_yoshi.png" alt=":yoshi:">'},
 			{"name": ":msonic:", "width": 16, "height": 16, "pos": "-18px -114px", "html": '<img src="http://3dsplaza.com/chathnd/buy_sonic.png" alt=":sonic:">'},
 			{"name": ":pball:", "width": 14, "height": 15, "pos": "-35px -114px", "html": '<img src="http://3dsplaza.com/chathnd/buy_pokeball.jpg" alt="(o)pokeball">'},
-			{"name": ":file:", "width": 10, "height": 14, "pos": "-50px -114px", "html": '<img src="http://3dsplaza.com/global/chat3/i/icon_file.png" alt="[=]">'}
+			{"name": ":file:", "width": 10, "height": 14, "pos": "-50px -114px", "html": '<img src="http://3dsplaza.com/global/chat3/i/icon_file.png" alt="[=]">'},
+			{"name": "//to do", "width": 16, "height": 16, "pos": "-77px -114px", "html": '<img src="http://3dsplaza.com/chathnd/icon_todo.png" alt="//to do">'}
 		]
 	},
 	chatroomNames = {
