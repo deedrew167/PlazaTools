@@ -218,10 +218,7 @@ function checkChat(cr){
 
 function onSettingsChange(){
 	for(var cr in chatrooms){
-		if(!settings.chatNotifier)
-			break;
-
-		if(settings.chatNotifierChatrooms.indexOf(cr) == -1 && tabChatrooms.indexOf(cr) == -1){ // if the looped chat isn't on the settings and tabs
+		if(!settings.chatNotifier || settings.chatNotifierChatrooms.indexOf(cr) == -1 && tabChatrooms.indexOf(cr) == -1){ // if the looped chat isn't on the settings and tabs
 			chatrooms[cr] = 0;
 			continue;
 		}
