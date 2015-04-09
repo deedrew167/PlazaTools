@@ -3,7 +3,7 @@
 
 	"name": "PlazaTools",
 	"description": "PlazaTools is an extension that adds a bunch of new features to 3DSPlaza, such as notifications, shortcuts and more.",
-	"version": "0.0.1",
+	"version": "2.0.0",
 
 	"icons": {
 		"19": "assets/icon19.png",
