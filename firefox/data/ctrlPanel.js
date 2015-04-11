@@ -3,11 +3,6 @@ var version = "v" + self.options.version,
 
 $("#tabAbout #title").insertAdjacentHTML("beforeend", version);
 
-$("#sendNotif").addEventListener("click", function(){
-	console.log("the thingy is clicked");
-	self.port.emit("sendNotiff", "yo");
-});
-self.port.emit("sendNotiff", {title: "title", text: "content", data: "details"});
 for(var s in settings){
 	if($("#"+s)){
 		$("#"+s).value = settings[s];
