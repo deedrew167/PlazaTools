@@ -50,8 +50,12 @@ checkUpdate.timeout = 10000;
 
 checkUpdate.onload = function() {
 	if (this.status >= 200 && this.status < 400)
-		if(this.response != version)
-			$("#changelog").innerHTML = "<span style='color:red'>New version is available: <strong>"+this.response+"</strong><br><a href='http://marioermando.tk/services/plazatools/getFirefox.php'>Get it</a>";
+		if(this.response != version){
+			$("#changelog").innerHTML = "<span style='color:red'>New version is available: <strong>"+this.response+"</strong><br><a href='javascript:void(0)'>Get it</a>";
+			$("#changelog a").onclick = function(){
+				self.port.emit("openTab", "http://marioermando.tk/services/plazatools/getFirefox.php");
+			}
+		}
 };
 
 checkUpdate.send();
