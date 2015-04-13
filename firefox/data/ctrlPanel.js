@@ -42,6 +42,20 @@ Array.prototype.forEach.call($$("#container input, #container textarea, #contain
 
 changeTab(currentTab);
 
+// check for updates
+
+var checkUpdate = new XMLHttpRequest();
+checkUpdate.open('GET', 'http://marioermando.tk/services/plazatools/version.txt', true);
+checkUpdate.timeout = 10000;
+
+checkUpdate.onload = function() {
+	if (this.status >= 200 && this.status < 400)
+		if(this.response != version)
+			$("#changelog").innerHTML = "<span style='color:red'>New version is available: <strong>"+this.response+"</strong><br><a href='http://marioermando.tk/services/plazatools/getFirefox.php'>Get it</a>";
+};
+
+checkUpdate.send();
+
 function changeTab(tabName){
 	Array.prototype.forEach.call($$("#container > div"), function(el, i){
 		el.style.display = "none";
