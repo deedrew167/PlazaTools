@@ -20,6 +20,8 @@
 				<div id="changelog">
 					Changelog:<br>
 					- Added badge for notifying updates<br>
+					- Added customizable template for the reply button<br>
+					- Reply button now converts several color tags<br><br>
 					<i>Do you have any suggestions / bug reports?<br>
 					Contact me at <a href="mailto:marioermando@gmail.com">marioermando@gmail.com</a></i>
 				</div>
@@ -61,7 +63,11 @@
 				<input type="checkbox" name="chatImgurThumbnail" id="chatImgurThumbnail"><label for="chatImgurThumbnail" title="Set if PlazaTools should show a thumbnail when you hover over an imgur link.">Imgur thumbnail on hover</label>
 			</div>
 			<div id="tabForums" style="display:none">
-				<input type="checkbox" name="forumReplyButton" id="forumReplyButton"><label for="forumReplyButton" title="Set if PlazaTools should add a reply button on thread comments.">Add a reply button to thread comments</label>
+				<fieldset>
+					<legend><input type="checkbox" name="forumReplyButton" id="forumReplyButton"><label for="forumReplyButton" title="Set if PlazaTools should add a reply button on thread comments.">Add a reply button to thread comments</label></legend>
+					<label for="forumReplyTemplate" title="Template that should be used while replying. Use %USERNAME% for the username, %QUOTE% for the quote.">Template for replying</label>
+					<textarea name="forumReplyTemplate" id="forumReplyTemplate" spellcheck="false" style="font-family:monospace"></textarea>
+				</fieldset>
 			</div>
 		</div>
 	</body>

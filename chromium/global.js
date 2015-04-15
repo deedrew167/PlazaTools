@@ -10,7 +10,8 @@ var $ = function(e) { return document.querySelector(e); },
 		"chatNotifierInterval": 60,
 		"chatURLToHyperlink": true,
 		"chatImgurThumbnail": true,
-		"forumReplyButton": true
+		"forumReplyButton": true,
+		"forumReplyTemplate": "[box=#CCCCCC][blue][b]%USERNAME%[/blue] said:[/b]\n[i]%QUOTE%[/i][/box]\n"
 	},
 	settings,
 	emoticons = {

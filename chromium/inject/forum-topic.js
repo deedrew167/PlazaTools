@@ -8,10 +8,11 @@ var HTMLToBBCode = {
 	"</b>": "[/b]",
 	"<center>": "[center]",
 	"</center>": "[/center]",
+	"<font color=\"(red|orange|green|lime|blue|violet|pink|black|white)\">(.*?)<\/font>": function($0, $1, $2){ return "["+$1+"]"+$2+"[/"+$1+"]"; },
 	"<img(?: class=\"user_image\"|) src=\"(.*)\">": function($0, $1){ return "[img]"+$1+"[/img]"; },
 	"<a href=\"(.*?)\" target=\"_blank\">(.*?)</a>": function($0, $1, $2){ return "[link="+$1+"]"+$2+"[/link]"; },
 	"<(?:.|\n)*?>": "" // dispose of unconverted tags
-}
+};
 
 function convertHTMLToBBCode(html){
 	for(exp in HTMLToBBCode){
@@ -32,7 +33,8 @@ chrome.storage.sync.get("settings", function(i){
 		Array.prototype.forEach.call(document.querySelectorAll(".commentbox_1, .commentbox_2"), function(el){
 			var usrName = el.querySelector("a[href^='../members/view_profile.php?user=']").innerHTML,
 				quote = convertHTMLToBBCode(el.innerHTML.match(/<hr>((.|\n)*)<hr>/)[1]),
-				replyButton = document.createElement("a");
+				replyButton = document.createElement("a"),
+				forumReply = settings.forumReplyTemplate.replace(/%USERNAME%/i, usrName).replace(/%QUOTE%/i, quote);
 
 			if(!el.querySelector(".edit_options"))
 				el.insertAdjacentHTML("afterbegin", "<span class='edit_options'></span>");
@@ -40,7 +42,7 @@ chrome.storage.sync.get("settings", function(i){
 			replyButton.innerHTML = "Reply";
 			replyButton.href = "javascript:void(0)";
 			replyButton.onclick = function(){
-				$("textarea[name=message]").value += "[box=#CCCCCC][blue][b]"+ usrName + "[/blue] said:[/b]\n[i]"+ quote + "[/i][/box]\n";
+				$("textarea[name=message]").value += forumReply; //"[box=#CCCCCC][blue][b]"+ usrName + "[/blue] said:[/b]\n[i]"+ quote + "[/i][/box]\n";
 				$("textarea[name=message]").focus();
 			}
 
