@@ -11,7 +11,7 @@ var $ = function(e) { return document.querySelector(e); },
 		"chatURLToHyperlink": true,
 		"chatImgurThumbnail": true,
 		"forumQuoteButton": true,
-		"forumQuoteTemplate": "[box=#CCCCCC][blue][b]%USERNAME%[/blue] said:[/b]\n[i]%QUOTE%[/i][/box]\n",
+		"forumQuoteTemplate": "[box=#CCCCCC][b][blue]%USERNAME%[/blue] said:[/b]\n[i]%QUOTE%[/i][/box]",
 		"forumReplyButton": false
 	},
 	settings,
