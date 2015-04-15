@@ -28,7 +28,7 @@ chrome.storage.sync.get("settings", function(i){
 		chatNotifierWhiteList += settings.chatNotifierWhiteList[n] + "\n";
 	}
 	$("#chatNotifierList").value = chatNotifierWhiteList.trim();
-	$("#forumReplyTemplate").value = settings.forumReplyTemplate;
+	$("#forumQuoteTemplate").value = settings.forumQuoteTemplate;
 
 	Array.prototype.forEach.call($$(".tab"), function(el, i){
 		el.addEventListener("click", function() {
@@ -96,7 +96,7 @@ function saveSettings(){
 			settings.chatNotifierChatrooms.push(el.getAttribute('name'));
 	});
 	settings.chatNotifierWhiteList = $("#chatNotifierList").value.split("\n");
-	settings.forumReplyTemplate = $("#forumReplyTemplate").value;
+	settings.forumQuoteTemplate = $("#forumQuoteTemplate").value;
 	chrome.storage.sync.set({"settings": settings}, function(){
 		$("#save").innerHTML = "Saved!";
 		$("#save").classList.remove("active");

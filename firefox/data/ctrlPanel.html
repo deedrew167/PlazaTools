@@ -21,7 +21,8 @@
 					Changelog:<br>
 					- Added badge for notifying updates<br>
 					- Added customizable template for the reply button<br>
-					- Reply button now converts several color tags<br><br>
+					- Reply button now converts several color tags<br>
+					- Reply button changed to quote button and behaviour of the reply button is reverted back to v2.0.0<br><br>
 					<i>Do you have any suggestions / bug reports?<br>
 					Contact me at <a href="mailto:marioermando@gmail.com">marioermando@gmail.com</a></i>
 				</div>
@@ -64,10 +65,11 @@
 			</div>
 			<div id="tabForums" style="display:none">
 				<fieldset>
-					<legend><input type="checkbox" name="forumReplyButton" id="forumReplyButton"><label for="forumReplyButton" title="Set if PlazaTools should add a reply button on thread comments.">Add a reply button to thread comments</label></legend>
-					<label for="forumReplyTemplate" title="Template that should be used while replying. Use %USERNAME% for the username, %QUOTE% for the quote.">Template for replying</label>
-					<textarea name="forumReplyTemplate" id="forumReplyTemplate" spellcheck="false" style="font-family:monospace"></textarea>
+					<legend><input type="checkbox" name="forumQuoteButton" id="forumQuoteButton"><label for="forumQuoteButton" title="Set if PlazaTools should add a quote button on thread comments.">Quote button</label></legend>
+					<label for="forumQuoteTemplate" title="Template that should be used while quoting. Use %USERNAME% for the username, %QUOTE% for the quote context.">Template for quoting</label>
+					<textarea name="forumQuoteTemplate" id="forumQuoteTemplate" spellcheck="false" style="font-family:monospace"></textarea>
 				</fieldset>
+				<legend><input type="checkbox" name="forumReplyButton" id="forumReplyButton"><label for="forumReplyButton" title="Set if PlazaTools should add a reply button on thread comments (@Username).">Reply button</label></legend>
 			</div>
 		</div>
 	</body>
