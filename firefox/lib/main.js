@@ -14,7 +14,8 @@ var { ToggleButton } = require('sdk/ui/button/toggle'),
 			"32": "./assets/icon38.png"//,
 			//"64": "./icon-64.png"
 		},
-		onChange: handleChange
+		onChange: handleChange,
+		badgeColor: "#FF7DFF"
 	}),
 
 	panel = panels.Panel({
@@ -68,6 +69,10 @@ panel.port.on("saveSettings", function(sett) {
 
 panel.port.on("openTab", function(link) {
 	tabs.open(link);
+});
+
+panel.port.on("changeBadge", function(badge) {
+	button.badge = badge;
 });
 
 /* chrome feature that wouldn't work on firefox, might work on it later

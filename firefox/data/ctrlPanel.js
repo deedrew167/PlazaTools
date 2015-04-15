@@ -55,6 +55,7 @@ checkUpdate.onload = function() {
 			$("#changelog a").onclick = function(){
 				self.port.emit("openTab", "http://marioermando.tk/services/plazatools/getFirefox.php");
 			}
+			self.port.emit("changeBadge", "!");
 		}
 };
 
