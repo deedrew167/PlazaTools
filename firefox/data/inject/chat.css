@@ -1,3 +1,7 @@
+#demo {
+	word-wrap: break-word;
+}
+
 #ptEmoticonSelectorButton {
 	position: absolute;
 	bottom: 11px;
