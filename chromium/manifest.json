@@ -36,6 +36,10 @@
 			"all_frames": true
 		},
 		{
+			"matches": ["http://pc.3dsplaza.com/forums/topics.php?forum=*"],
+			"js": ["global.js", "inject/forum-cat.js"]
+		},
+		{
 			"matches": ["http://pc.3dsplaza.com/forums/topic.php?topic=*"],
 			"js": ["global.js", "inject/forum-topic.js"]
 		}

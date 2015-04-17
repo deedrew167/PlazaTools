@@ -12,7 +12,8 @@ var $ = function(e) { return document.querySelector(e); },
 		"chatImgurThumbnail": true,
 		"forumQuoteButton": true,
 		"forumQuoteTemplate": "[box=#CCCCCC][b][blue]%USERNAME%[/blue] said:[/b]\n[i]%QUOTE%[/i][/box]",
-		"forumReplyButton": false
+		"forumReplyButton": false,
+		"forumLastPageButton": true
 	},
 	settings,
 	emoticons = {

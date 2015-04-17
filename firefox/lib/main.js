@@ -47,6 +47,12 @@ var { ToggleButton } = require('sdk/ui/button/toggle'),
 		include: "http://pc.3dsplaza.com/forums/topic.php?topic=*",
 		contentScriptOptions: {userSett: ss.storage.settings},
 		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/forum-topic.js")]
+	}),
+
+	forumCatInject = pageMod.PageMod({
+		include: "http://pc.3dsplaza.com/forums/topics.php?forum=*",
+		contentScriptOptions: {userSett: ss.storage.settings},
+		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/forum-cat.js")]
 	});
 
 function handleChange(state) {
