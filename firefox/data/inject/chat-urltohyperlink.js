@@ -27,10 +27,13 @@ function ptImgurPopupPos(e, id){
 					if(settings.chatURLToHyperlink)
 						$("#demo").innerHTML = $("#demo").innerHTML.replace(/ ((?:https?:\/\/)[^\s\/$.?#].[^\s][^"|<|>| ]*)/gmi, function($0){ return ' <a href="' + $0.trim() + '" target="_blank">' + $0.trim() + '</a>'; });
 				}
-				if(this.response.split('<!--s-->')[1] != '')
+				if(this.response.split('<!--s-->')[1] != ''){
 					Array.prototype.forEach.call(window.parent.document.querySelectorAll(".ptImgurLinkThumbnail"), function(el){
 						el.style.display = "none";
 					});
+					if(settings.chatMentionHighlight)
+						$("#demo").innerHTML = $("#demo").innerHTML.replace(/( |.|?)(?:@(.*?)(?=\s|<|.|?))/gmi, function($0, $1){ return ' <a href="http://pc.3dsplaza.com/members/view_profile.php?user=' + $1+ '" target="_blank">@' + $1 + '</a>'; });
+				}
 			}, false);
 		open.call(this, method, url, async, user, pass);
 	};
