@@ -218,7 +218,7 @@ function checkChat(cr){
 
 function onSettingsChange(){
 	for(var cr in chatrooms){
-		if(!settings.chatNotifier || settings.chatNotifierChatrooms.indexOf(cr) == -1 && tabChatrooms.indexOf(cr) == -1){ // if the looped chat isn't on the settings and tabs
+		if(!settings.chatNotifier || (settings.chatNotifierClosedOnly && tabChatrooms.indexOf(cr) != -1) || settings.chatNotifierChatrooms.indexOf(cr) == -1 && tabChatrooms.indexOf(cr) == -1){ // if the looped chat isn't on the settings and tabs
 			chatrooms[cr] = 0;
 			continue;
 		}
@@ -249,7 +249,7 @@ chrome.storage.sync.get("settings", function(i){
 			if(!settings.chatNotifier)
 				break;
 
-			if(settings.chatNotifierChatrooms.indexOf(cr) == -1 && tabChatrooms.indexOf(cr) == -1)
+			if((settings.chatNotifierClosedOnly && tabChatrooms.indexOf(cr) != -1) || settings.chatNotifierChatrooms.indexOf(cr) == -1 && tabChatrooms.indexOf(cr) == -1)
 				continue;
 
 			updateChatId(cr);
