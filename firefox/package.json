@@ -7,6 +7,6 @@
 	"license": "MPL 2.0",
 	"version": "2.3.0",
 	"permissions": {
-		"cross-domain-content": ["http://pc.3dsplaza.com/", "http://dsi.3dsplaza.com/", "http://3dsplaza.com/", "http://marioermando.tk", "http://ermansay.in"]
+		"cross-domain-content": ["http://pc.3dsplaza.com/", "http://dsi.3dsplaza.com/", "http://3dsplaza.com/", "http://ermansay.in"]
 	}
 }

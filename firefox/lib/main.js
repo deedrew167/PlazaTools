@@ -45,14 +45,20 @@ var { ToggleButton } = require('sdk/ui/button/toggle'),
 
 	forumTopicInject = pageMod.PageMod({
 		include: "http://pc.3dsplaza.com/forums/topic.php?topic=*",
-		contentScriptOptions: {userSett: ss.storage.settings},
-		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/forum-topic.js")]
+		contentScriptOptions: {userSett: ss.storage.settings, resourceURI: {"ckeditor": self.data.url("./inject/ckeditor/ckeditor.js")}},
+		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/forum-topic.js"), self.data.url("./inject/runRichEditor.js")]
 	}),
 
 	forumCatInject = pageMod.PageMod({
 		include: "http://pc.3dsplaza.com/forums/topics.php?forum=*",
 		contentScriptOptions: {userSett: ss.storage.settings},
 		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/forum-cat.js")]
+	}),
+
+	forumPostEditInject = pageMod.PageMod({
+		include: "http://pc.3dsplaza.com/forums/edit_post.php?id=*",
+		contentScriptOptions: {userSett: ss.storage.settings, resourceURI: {"ckeditor": self.data.url("./inject/ckeditor/ckeditor.js")}},
+		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/runRichEditor.js")]
 	});
 
 function handleChange(state) {
