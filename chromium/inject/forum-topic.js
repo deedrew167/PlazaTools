@@ -1,18 +1,18 @@
 var HTMLToBBCode = {
-	"(^<hr>|<hr>$)": "",
-	"\n": "",
-	"<br><br><center><div class=\"edit_warning\">(.*?)</div></center>": "", // get rid of the edit warning
-	"<br>": "\n",
-	"<hr>": "[line]",
-	"<b>": "[b]",
-	"</b>": "[/b]",
-	"<center>": "[center]",
-	"</center>": "[/center]",
-	"<font color=\"(red|orange|green|lime|blue|violet|pink|black|white)\">(.*?)<\/font>": function($0, $1, $2){ return "["+$1+"]"+$2+"[/"+$1+"]"; },
-	"<img(?: class=\"user_image\"|) src=\"(.*)\">": function($0, $1){ return "[img]"+$1+"[/img]"; },
-	"<a href=\"(.*?)\" target=\"_blank\">(.*?)</a>": function($0, $1, $2){ return "[link="+$1+"]"+$2+"[/link]"; },
-	"<(?:.|\n)*?>": "" // dispose of unconverted tags
-};
+		"(^<hr>|<hr>$)": "",
+		"\n": "",
+		"<br><br><center><div class=\"edit_warning\">(.*?)</div></center>": "", // get rid of the edit warning
+		"<br>": "\n",
+		"<hr>": "[line]",
+		"<b>": "[b]",
+		"</b>": "[/b]",
+		"<center>": "[center]",
+		"</center>": "[/center]",
+		"<font color=\"(red|orange|green|lime|blue|violet|pink|black|white)\">(.*?)<\/font>": function($0, $1, $2){ return "["+$1+"]"+$2+"[/"+$1+"]"; },
+		"<img(?: class=\"user_image\"|) src=\"(.*)\">": function($0, $1){ return "[img]"+$1+"[/img]"; },
+		"<a href=\"(.*?)\" target=\"_blank\">(.*?)</a>": function($0, $1, $2){ return "[link="+$1+"]"+$2+"[/link]"; },
+		"<(?:.|\n)*?>": "" // dispose of unconverted tags
+	};
 
 function convertHTMLToBBCode(html){
 	for(exp in HTMLToBBCode){
@@ -29,7 +29,7 @@ chrome.storage.sync.get("settings", function(i){
 	};
 	settings = userSett;
 
-	if($("textarea[name=message]"))
+	if($("textarea[name=message]")){
 		Array.prototype.forEach.call(document.querySelectorAll(".commentbox_1, .commentbox_2"), function(el){
 			if(!el.querySelector(".edit_options"))
 					el.insertAdjacentHTML("afterbegin", "<span class='edit_options'></span>");
@@ -40,10 +40,16 @@ chrome.storage.sync.get("settings", function(i){
 
 				replyButton.innerHTML = "Reply";
 				replyButton.href = "javascript:void(0)";
-				replyButton.onclick = function(){
-					$("textarea[name=message]").value += "[blue]@"+usrName+"[/blue] ";
-					$("textarea[name=message]").focus();
-				}
+				replyButton.setAttribute('onclick',
+					"if(CKEDITOR.instances.message){"+
+						"CKEDITOR.instances.message.insertHtml('<span style=\"color:blue\">@"+usrName+" </span>');"+
+						"document.getElementById('cke_message').scrollIntoView();"+
+						"CKEDITOR.instances.message.focus();"+
+					"}else{"+
+						"document.querySelector('textarea[name=message]').value += '[blue]@"+usrName+"[/blue] ';"+
+						"document.querySelector('textarea[name=message]').focus();"+
+					"}"
+				);
 
 				el.querySelector(".edit_options").insertBefore(replyButton, el.querySelector(".edit_options").firstChild);
 				if(el.querySelector(".edit_options").children[1])
@@ -58,14 +64,25 @@ chrome.storage.sync.get("settings", function(i){
 
 				quoteButton.innerHTML = "Quote";
 				quoteButton.href = "javascript:void(0)";
-				quoteButton.onclick = function(){
-					$("textarea[name=message]").value += forumQuote;
-					$("textarea[name=message]").focus();
-				}
+				quoteButton.setAttribute('onclick',
+					"if(CKEDITOR.instances.message){"+
+						"CKEDITOR.instances.bbcodeconvert.setData("+JSON.stringify(forumQuote)+");"+
+						"CKEDITOR.instances.message.insertHtml(CKEDITOR.instances.bbcodeconvert.document.getBody().getHtml()+'<br>');"+
+						"document.getElementById('cke_message').scrollIntoView();"+
+						"CKEDITOR.instances.message.focus();"+
+					"}else{"+
+						"document.querySelector('textarea[name=message]').value += "+JSON.stringify(forumQuote)+";"+
+						"document.querySelector('textarea[name=message]').focus();"+
+					"}"
+				);
 
 				el.querySelector(".edit_options").insertBefore(quoteButton, el.querySelector(".edit_options").firstChild);
 				if(el.querySelector(".edit_options").children[1])
 					quoteButton.insertAdjacentHTML("afterend", " ");
 			}
 		});
+
+		// create an invisible ckeditor instance to convert BBCode to html to be inserted into the main editor
+		$("body").insertAdjacentHTML("beforeEnd", "<textarea class='ckeditor' name='bbcodeconvert' style='display:none'></textarea>");
+	}
 });

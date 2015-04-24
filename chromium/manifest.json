@@ -41,7 +41,11 @@
 		},
 		{
 			"matches": ["http://pc.3dsplaza.com/forums/topic.php?topic=*"],
-			"js": ["global.js", "inject/forum-topic.js"]
+			"js": ["global.js", "inject/forum-topic.js", "inject/runRichEditor.js"]
+		},
+		{
+			"matches": ["http://pc.3dsplaza.com/forums/edit_post.php?id=*"],
+			"js": ["global.js", "inject/runRichEditor.js"]
 		}
 	],
 
