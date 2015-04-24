@@ -16,7 +16,8 @@ var $ = function(e) { return document.querySelector(e); },
 		"forumQuoteTemplate": "[box=#CCCCCC][b][blue]%USERNAME%[/blue] said:[/b]\n[i]%QUOTE%[/i][/box]",
 		"forumReplyButton": false,
 		"forumLastPageButton": true,
-		"forumRichTextEditor": true
+		"forumRichTextEditor": true,
+		"forumNoBtnOnMyPosts": true
 	},
 	settings,
 	emoticons = {
