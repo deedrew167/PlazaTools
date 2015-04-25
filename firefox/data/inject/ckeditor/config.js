@@ -4,7 +4,7 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-	config.extraPlugins = 'bbcode',
+	config.extraPlugins = 'bbcode,plazatools',
 
 	config.width = '70%';
 
@@ -14,7 +14,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{name: 'links'},
 		{name: 'insert'},
 		{name: 'others'},
-		{name: 'styles'},
+		//{name: 'styles'},
 		{name: 'mode'},
 		{name: 'tools'}
 	];
