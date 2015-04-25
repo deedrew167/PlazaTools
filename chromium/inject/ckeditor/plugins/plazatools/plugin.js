@@ -1,4 +1,5 @@
 /* 
+	This plugin is a part of PlazaTools which can be found at http://ermansay.in/services/plazatools
 	(c) 2015 Erman Sayın
 	http://ermansay.in
 */
