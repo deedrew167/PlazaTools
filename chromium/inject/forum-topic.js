@@ -43,7 +43,7 @@ chrome.storage.sync.get("settings", function(i){
 					replyButton.innerHTML = "Reply";
 					replyButton.href = "javascript:void(0)";
 					replyButton.setAttribute('onclick',
-						"if(CKEDITOR.instances.message){"+
+						"if(typeof CKEDITOR != \"undefined\" && CKEDITOR.instances.message){"+
 							"CKEDITOR.instances.message.insertHtml('<span style=\"color:blue\">@"+usrName+" </span>');"+
 							"document.getElementById('cke_message').scrollIntoView();"+
 							"CKEDITOR.instances.message.focus();"+
@@ -69,7 +69,7 @@ chrome.storage.sync.get("settings", function(i){
 					quoteButton.innerHTML = "Quote";
 					quoteButton.href = "javascript:void(0)";
 					quoteButton.setAttribute('onclick',
-						"if(CKEDITOR.instances.message){"+
+						"if(typeof CKEDITOR != \"undefined\" && CKEDITOR.instances.message){"+
 							"CKEDITOR.instances.bbcodeconvert.setData("+JSON.stringify(forumQuote)+");"+
 							"CKEDITOR.instances.message.insertHtml(CKEDITOR.instances.bbcodeconvert.document.getBody().getHtml()+'<br>');"+
 							"document.getElementById('cke_message').scrollIntoView();"+
