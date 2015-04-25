@@ -28,7 +28,7 @@
 
 	var bbcodeMap = {
 			b: 'strong', u: 'u', i: 'em', s: 's', color: 'span', size: 'span', code: 'code', link: 'a', img: 'span',
-			center: 'center', line: 'hr', box: 'div', rbox: 'div', red: 'span', orange: 'span', lime: 'span', green: 'span', blue: 'span', purple: 'span', violet: 'span', pink: 'span'
+			center: 'center', line: 'hr', box: 'div', rbox: 'div', hl: 'span', red: 'span', orange: 'span', lime: 'span', green: 'span', blue: 'span', purple: 'span', violet: 'span', pink: 'span'
 		},
 		convertMap = { strong: 'b', b: 'b', u: 'u', em: 'i', i: 'i', s: 's', code: 'code', hr: 'line', center: 'center'},
 		tagnameMap = { strong: 'b', em: 'i', u: 'u', s: 's', code: 'code', a: 'link', img: 'img', hr: 'line', center: 'center'},
@@ -174,6 +174,11 @@
 					}else if(part == 'rbox'){
 						attribs.style = "border-radius:15px;padding:0 0 0 5px;background-color:" + optionPart;
 					}
+
+					// 3dsplaza highlight bbcode -marioermando
+
+					if(part == 'hl')
+						attribs.style = "background-color:#FFFF00";
 
 
 					// Two special handling - image and email, protect them
@@ -693,6 +698,8 @@
 						} else if ( tagName == 'span' ) {
 							if(colorTags[style.color]){ // if the tag is a plaza color bbcode
 								tagName = style.color;
+							} else if(style["background-color"] == "#FFFF00"){ // if the tag is a plaza highlight bbcode
+								tagName = 'hl';
 							} else if (value = style.color) {
 								tagName = 'color';
 								value = CKEDITOR.tools.convertRgbToHex(value);

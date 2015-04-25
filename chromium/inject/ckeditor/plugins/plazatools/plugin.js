@@ -1,26 +1,55 @@
+/* 
+	(c) 2015 Erman Sayın
+	http://ermansay.in
+*/
+
 CKEDITOR.plugins.add('plazatools', {
-	icons: 'smh,greentext',
+	icons: 'smh,greentext,highlight',
 	init: function(editor) {
+		// styles
+		var styles = {
+			greentext: new CKEDITOR.style({
+				element: 'span',
+				styles: {color: 'green'} 
+			}),
+			highlight: new CKEDITOR.style({
+				element: 'span',
+				styles: {"background-color": '#FFFF00'} 
+			})
+		};
+
 		// cmds
 		editor.addCommand('smh', {exec: function(editor){ editor.insertText("smh"); }} );
 		editor.addCommand('greentext', {exec: function(editor){
-			editor.applyStyle(new CKEDITOR.style({
-				element: 'span',
-				styles: {color: 'green'} 
-		 	}));
-		 	editor.insertText("> "+ editor.getSelection().getNative()); 
+			editor.applyStyle(styles.greentext);
+			editor.insertText("> "+ editor.getSelection().getNative()); 
+		}});
+		editor.addCommand('highlight', {exec: function(editor){
+			editor.applyStyle(styles.highlight);
 		}});
 
 		// btns
-		editor.ui.addButton( 'smh', {
+		editor.ui.addButton('smh', {
 			label: 'smh',
 			command: 'smh',
 			toolbar: 'insert'
 		});
-		editor.ui.addButton( 'greentext', {
+		editor.ui.addButton('greentext', {
 			label: 'Insert Greentext',
 			command: 'greentext',
 			toolbar: 'insert'
+		});
+		editor.ui.addButton('highlight', {
+			label: 'Highlight',
+			command: 'highlight',
+			toolbar: 'colors'
+		});
+
+		// button state handlers
+
+		// highlight
+		editor.attachStyleStateChange(styles.highlight, function(state){
+			editor.getCommand("highlight").setState(state);
 		});
 	}
 });
