@@ -28,10 +28,10 @@
 
 	var bbcodeMap = {
 			b: 'strong', u: 'u', i: 'em', s: 's', color: 'span', size: 'span', code: 'code', link: 'a', img: 'span',
-			line: 'hr', box: 'div', rbox: 'div', red: 'span', orange: 'span', lime: 'span', green: 'span', blue: 'span', purple: 'span', violet: 'span', pink: 'span'
+			center: 'center', line: 'hr', box: 'div', rbox: 'div', red: 'span', orange: 'span', lime: 'span', green: 'span', blue: 'span', purple: 'span', violet: 'span', pink: 'span'
 		},
-		convertMap = { strong: 'b', b: 'b', u: 'u', em: 'i', i: 'i', s: 's', code: 'code', hr: 'line'},
-		tagnameMap = { strong: 'b', em: 'i', u: 'u', s: 's', code: 'code', a: 'link', img: 'img', hr: 'line'},
+		convertMap = { strong: 'b', b: 'b', u: 'u', em: 'i', i: 'i', s: 's', code: 'code', hr: 'line', center: 'center'},
+		tagnameMap = { strong: 'b', em: 'i', u: 'u', s: 's', code: 'code', a: 'link', img: 'img', hr: 'line', center: 'center'},
 		stylesMap = { color: 'color', size: 'font-size'},
 		attributesMap = { link: 'href' },
 		colorTags = {
