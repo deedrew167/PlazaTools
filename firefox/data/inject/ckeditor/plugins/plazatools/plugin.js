@@ -5,7 +5,7 @@
 */
 
 CKEDITOR.plugins.add('plazatools', {
-	icons: 'smh,greentext,highlight',
+	icons: 'smh,greentext,highlight,youtube',
 	init: function(editor) {
 		// styles
 		var styles = {
@@ -19,15 +19,21 @@ CKEDITOR.plugins.add('plazatools', {
 			})
 		};
 
+		// dialogs
+		CKEDITOR.dialog.add('ytDialog', this.path + 'dialogs/yt.js' );
+
 		// cmds
-		editor.addCommand('smh', {exec: function(editor){ editor.insertText("smh"); }} );
+		editor.addCommand('smh', {exec: function(editor){
+			editor.insertText("smh");
+		}});
 		editor.addCommand('greentext', {exec: function(editor){
 			editor.applyStyle(styles.greentext);
-			editor.insertText("> "+ editor.getSelection().getNative()); 
+			editor.insertText("> "+ editor.getSelection().getNative());
 		}});
 		editor.addCommand('highlight', {exec: function(editor){
 			editor.applyStyle(styles.highlight);
 		}});
+		editor.addCommand('youtube', new CKEDITOR.dialogCommand('ytDialog'));
 
 		// btns
 		editor.ui.addButton('smh', {
@@ -44,6 +50,11 @@ CKEDITOR.plugins.add('plazatools', {
 			label: 'Highlight',
 			command: 'highlight',
 			toolbar: 'colors'
+		});
+		editor.ui.addButton('youtube', {
+			label: 'Insert YouTube video',
+			command: 'youtube',
+			toolbar: 'insert'
 		});
 
 		// button state handlers

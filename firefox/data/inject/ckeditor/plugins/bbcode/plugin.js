@@ -22,13 +22,16 @@
 			tab.remove( 'cmbTarget' );
 			tab = definition.getContents( 'info' );
 			tab.remove( 'txtAlt' );
-			tab.remove( 'basic' );
+			tab.remove( 'txtBorder' );
+			tab.remove( 'txtHSpace' );
+			tab.remove( 'txtVSpace' );
+			tab.remove( 'cmbAlign' );
 		}
 	} );
 
 	var bbcodeMap = {
-			b: 'strong', u: 'u', i: 'em', s: 's', color: 'span', size: 'span', code: 'code', link: 'a', img: 'span',
-			center: 'center', line: 'hr', box: 'div', rbox: 'div', hl: 'span', red: 'span', orange: 'span', lime: 'span', green: 'span', blue: 'span', purple: 'span', violet: 'span', pink: 'span'
+			b: 'strong', u: 'u', i: 'em', s: 's', color: 'span', code: 'code', link: 'a', img: 'span',
+			center: 'center', line: 'hr', box: 'div', rbox: 'div', hl: 'span', spoiler: 'div', youtube: 'iframe', red: 'span', orange: 'span', lime: 'span', green: 'span', blue: 'span', purple: 'span', violet: 'span', pink: 'span'
 		},
 		convertMap = { strong: 'b', b: 'b', u: 'u', em: 'i', i: 'i', s: 's', code: 'code', hr: 'line', center: 'center'},
 		tagnameMap = { strong: 'b', em: 'i', u: 'u', s: 's', code: 'code', a: 'link', img: 'img', hr: 'line', center: 'center'},
@@ -180,10 +183,29 @@
 					if(part == 'hl')
 						attribs.style = "background-color:#FFFF00";
 
+					// 3dsplaza resized img bbcode -marioermando
+
+					if(part == 'img' && optionPart){
+						var imgDim = optionPart.match(/([0-9]*)x([0-9]*)/gi);
+						if(imgDim)
+							attribs.style = "width:" + imgDim[1] + "px;height:" + imgDim[2] + "px";
+					}
+
+					// 3dsplaza spoiler bbcode -marioermando
+					if(part == 'spoiler'){
+						attribs.spoilerTitle = optionPart;
+					}
+
+					if(part == 'youtube'){
+						attribs.width = 560;
+						attribs.height = 315;
+						attribs.frameborder = 0;
+						attribs.allowfullscreen = 1;
+					}
 
 					// Two special handling - image and email, protect them
 					// as "span" with an attribute marker.
-					if ( part == 'email' || part == 'img' )
+					if (part == 'img' || part == 'youtube')
 						attribs.bbcode = part;
 
 					this.onTagOpen( tagName, attribs, CKEDITOR.dtd.$empty[ tagName ] );
@@ -638,23 +660,14 @@
 								element.name = 'img';
 								element.attributes.src = element.children[ 0 ].value;
 								element.children = [];
-							} else if ( bbcode == 'email' ) {
-								element.name = 'a';
-								element.attributes.href = 'mailto:' + element.children[ 0 ].value;
 							}
-
 							delete element.attributes.bbcode;
 						}
 					},
-					ol: function( element ) {
-						if ( element.attributes.listType ) {
-							if ( element.attributes.listType != 'decimal' )
-								element.attributes.style = 'list-style-type:' + element.attributes.listType;
-						} else {
-							element.name = 'ul';
+					div: function( element ) {
+						if (element.attributes.spoilerTitle){
+							element.setHtml('<div class="spoiler"><div class="spoiler-title"><div class="spoiler-toggle hide-icon"></div>'+element.attributes.spoilerTitle+'</div><div class="spoiler-content"><p>'+element.getHtml().trim()+'</p></div></div>');
 						}
-
-						delete element.attributes.listType;
 					},
 					a: function( element ) {
 						if ( !element.attributes.href )
@@ -673,6 +686,12 @@
 							title: description,
 							alt: description
 						};
+					},
+					iframe: function(element){
+						var id = element.getHtml();
+						element.attributes.src = '//www.youtube.com/embed/' + id + '?rel=0';
+						element.attributes["data-youtube-id"] = id;
+						element.setHtml("");
 					}
 				}
 			} );
@@ -688,12 +707,23 @@
 						if ( tagName in convertMap )
 							tagName = convertMap[ tagName ];
 						else if(tagName == 'div'){
-							if(attributes.style && attributes.style.match("background-color")){
-								tagName = "box";
-								value = style['background-color'];
+							if(attributes.style){
+								if(style["background-color"]){
+									tagName = "box";
+									value = style['background-color'];
 
-								if(attributes.style.match("border-radius"))
-									tagName = "rbox";
+									if(attributes.style.match("border-radius"))
+										tagName = "rbox";
+								}
+
+								if(style["text-align"] == "center")
+									tagName = "center";
+							}
+							if(attributes.class == "spoiler"){
+								tagName = "spoiler";
+								value = element.children[0].children[1].value;
+								element.children[0].children[1].remove();
+
 							}
 						} else if ( tagName == 'span' ) {
 							if(colorTags[style.color]){ // if the tag is a plaza color bbcode
@@ -761,10 +791,18 @@
 							var src = attributes[ 'data-cke-saved-src' ] || attributes.src,
 								alt = attributes.alt;
 
+							if(style.width && style.height) // if the dimensions are set
+								value = parseInt(style.width) + "x" + parseInt(style.height);
+
 							if ( src && src.indexOf( editor.config.smiley_path ) != -1 && alt )
 								return new CKEDITOR.htmlParser.text( smileyMap[ alt ] );
 							else
 								element.children = [ new CKEDITOR.htmlParser.text( src ) ];
+						} else if (tagName == 'iframe'){
+							if(element.attributes["data-youtube-id"]){
+								tagName = "youtube";
+								element.setHtml(element.attributes["data-youtube-id"]);
+							}
 						}
 
 						element.name = tagName;

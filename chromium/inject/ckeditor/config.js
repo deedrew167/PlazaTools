@@ -12,6 +12,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{name: 'undo'},
 		{name: 'basicstyles', groups: ['basicstyles', 'colors', 'cleanup']},
 		{name: 'links'},
+		{name: 'align'},
 		{name: 'insert'},
 		{name: 'others'},
 		//{name: 'styles'},
@@ -19,7 +20,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{name: 'tools'}
 	];
 
-	config.removeButtons = 'Subscript,Superscript,Anchor,BGColor';
+	config.removeButtons = 'Subscript,Superscript,Anchor,BGColor,JustifyLeft,JustifyRight,JustifyBlock';
 
 	//config.format_tags = 'p;h1;h2;h3;pre';
 
