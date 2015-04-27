@@ -32,7 +32,7 @@ function ptImgurPopupPos(e, id){
 						el.style.display = "none";
 					});
 					if(settings.chatMentionHighlight)
-						$("#demo").innerHTML = $("#demo").innerHTML.replace(/( |.|?)(?:@(.*?)(?=\s|<|.|?))/gmi, function($0, $1){ return ' <a href="http://pc.3dsplaza.com/members/view_profile.php?user=' + $1+ '" target="_blank">@' + $1 + '</a>'; });
+						$("#demo").innerHTML = $("#demo").innerHTML.replace(/(?:@|.@|\?@)([\w~]*)/gmi, function($0, $1){ return ' <a href="http://pc.3dsplaza.com/members/view_profile.php?user=' + $1+ '" target="_blank">@' + $1 + '</a>'; });
 				}
 			}, false);
 		open.call(this, method, url, async, user, pass);
