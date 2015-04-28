@@ -16,7 +16,12 @@ CKEDITOR.dialog.add('ytDialog', function ( editor ) {
 						type: 'text',
 						id: 'youtubeURL',
 						label: 'YouTube video link',
-						validate: CKEDITOR.dialog.validate.regex(/.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/, "The link you have provided is not a valid YouTube video link.")
+						validate: CKEDITOR.dialog.validate.regex(/.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/, "The link you have provided is not a valid YouTube video link. smh")
+					},
+					{
+						type: 'checkbox',
+						id: 'autoplay',
+						label: 'Autoplay'
 					}
 				]
 			}
@@ -24,10 +29,13 @@ CKEDITOR.dialog.add('ytDialog', function ( editor ) {
 		onOk: function() {
 			var id = this.getValueOf('tab-main', 'youtubeURL').match(/.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/)[1],
 				oTag = editor.document.createElement('iframe');
-			
+
+			if(this.getValueOf('tab-main', 'autoplay'))
+				id += "?autoplay=1";
+
 			oTag.setAttribute('width', '560');
 			oTag.setAttribute('height', '315');
-			oTag.setAttribute('src', '//www.youtube.com/embed/' + id + '?rel=0');
+			oTag.setAttribute('src', '//www.youtube.com/embed/' + id);
 			oTag.setAttribute('frameborder', '0');
 			oTag.setAttribute('allowfullscreen', '1');
 			oTag.setAttribute('data-youtube-id', id);

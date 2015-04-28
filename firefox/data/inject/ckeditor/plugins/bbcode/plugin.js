@@ -689,7 +689,7 @@
 					},
 					iframe: function(element){
 						var id = element.getHtml();
-						element.attributes.src = '//www.youtube.com/embed/' + id + '?rel=0';
+						element.attributes.src = '//www.youtube.com/embed/' + id;
 						element.attributes["data-youtube-id"] = id;
 						element.setHtml("");
 					}
