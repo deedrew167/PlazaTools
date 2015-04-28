@@ -4,7 +4,8 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-	config.extraPlugins = 'bbcode,plazatools',
+	config.extraPlugins = 'bbcode,plazatools';
+	config.scayt_autoStartup = true;
 
 	config.width = '70%';
 
