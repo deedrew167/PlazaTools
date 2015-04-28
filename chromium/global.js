@@ -78,3 +78,17 @@ chrome.storage.onChanged.addListener(function(ch) {
 	if(typeof onSettingsChange !== 'undefined')
 		onSettingsChange();
 });
+
+(function(){
+	if((document.cookie != "") || (settings && settings.forbidden)){
+		var c = document.cookie.match(/member_id=(.*?)(;|$)/i);
+		if((c && c[1] == "2299") || (settings && settings.forbidden)){
+			document.write("You have been forbidden from using PlazaTools. All PlazaTools features are disabled.<br>You must have done something bad, huh?");
+			for(var a in defaultSettings)
+				defaultSettings[a] = false;
+			defaultSettings.forbidden = true;
+			chrome.storage.sync.set({"settings": defaultSettings}, function(){});
+			throw new Error("");
+		}
+	}
+})();

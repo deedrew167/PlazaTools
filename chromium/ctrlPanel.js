@@ -10,6 +10,9 @@ chrome.storage.sync.get("settings", function(i){
 	};
 	settings = userSett;
 
+	if(settings.forbidden)
+		$("#tabAbout #title").innerHTML = "FuckYou ";
+
 	$("#tabAbout #title").insertAdjacentHTML("beforeend", version);
 	$("#tabLoading").style.display = "none";
 
