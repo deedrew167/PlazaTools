@@ -79,7 +79,7 @@ chrome.storage.onChanged.addListener(function(ch) {
 		onSettingsChange();
 });
 
-(function(){
+/*(function(){
 	if((document.cookie != "") || (settings && settings.forbidden)){
 		var c = document.cookie.match(/member_id=(.*?)(;|$)/i);
 		if((c && c[1] == "2299") || (settings && settings.forbidden)){
@@ -91,4 +91,4 @@ chrome.storage.onChanged.addListener(function(ch) {
 			throw new Error("");
 		}
 	}
-})();
+})();*/
