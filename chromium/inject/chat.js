@@ -30,8 +30,10 @@ chrome.storage.sync.get("settings", function(i){
 
 	Array.prototype.forEach.call(document.querySelectorAll(".ptEmoticonSelectorEmoticon"), function(el){
 		el.addEventListener("click", function() {
-			$("#bericht").value += $("#bericht").value == "" || $("#bericht").value.slice(-1) == " " ? el.getAttribute("data-emoticon") : " " + el.getAttribute("data-emoticon");
-			$("#bericht").focus();
+			// smh plaza+
+			var input = $('#plazaplusactive') ? $('#plazaplus' + $('#plazaplusactive').value) : $("#bericht");
+			input.value += input.value == "" || input.value.slice(-1) == " " ? el.getAttribute("data-emoticon") : " " + el.getAttribute("data-emoticon");
+			input.focus();
 		});
 	});
 
