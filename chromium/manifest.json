@@ -36,6 +36,11 @@
 			"all_frames": true
 		},
 		{
+			"matches": ["http://pc.3dsplaza.com/chat3/nav.php*"],
+			"css": ["inject/chat-nav.css"],
+			"all_frames": true
+		},
+		{
 			"matches": ["http://pc.3dsplaza.com/forums/topics.php?forum=*"],
 			"css": ["inject/forum-cat.css"],
 			"js": ["global.js", "inject/forum-cat.js"]
