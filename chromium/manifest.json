@@ -42,6 +42,7 @@
 		},
 		{
 			"matches": ["http://pc.3dsplaza.com/forums/topics.php?forum=*"],
+			"css": ["inject/forum-cat.css"],
 			"js": ["global.js", "inject/forum-cat.js"]
 		},
 		{
