@@ -9,7 +9,8 @@ var HTMLToBBCode = {
 		"<center>": "[center]",
 		"</center>": "[/center]",
 		"<font color=\"(red|orange|green|lime|blue|violet|pink|black|white)\">(.*?)<\/font>": function($0, $1, $2){ return "["+$1+"]"+$2+"[/"+$1+"]"; },
-		"<img(?: class=\"user_image\"|) src=\"(.*)\">": function($0, $1){ return "[img]"+$1+"[/img]"; },
+		"<img src=\"([^\"]*?)\" class=\"user_image\" width=\"100%\" \/>": function($0, $1){ return "[simg]"+$1+"[/simg]"; },
+		"<img(?: class='user_image'|) src=\"([^\"]*?)\"(?: \/|)>": function($0, $1){ return "[img]"+$1+"[/img]"; },
 		"<a href=\"(.*?)\" target=\"_blank\">(.*?)</a>": function($0, $1, $2){ return "[link="+$1+"]"+$2+"[/link]"; },
 		"<(?:.|\n)*?>": "" // dispose of unconverted tags
 	};
