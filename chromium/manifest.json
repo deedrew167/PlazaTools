@@ -52,6 +52,10 @@
 		{
 			"matches": ["http://pc.3dsplaza.com/forums/edit_post.php?id=*"],
 			"js": ["global.js", "inject/runRichEditor.js"]
+		},
+		{
+			"matches": ["http://pc.3dsplaza.com/forums/newtopic.php?forum=*"],
+			"js": ["global.js", "inject/runRichEditor.js"]
 		}
 	],
 

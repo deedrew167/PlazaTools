@@ -64,6 +64,12 @@ var { ToggleButton } = require('sdk/ui/button/toggle'),
 		include: "http://pc.3dsplaza.com/forums/edit_post.php?id=*",
 		contentScriptOptions: {userSett: ss.storage.settings, resourceURI: {"ckeditor": self.data.url("./inject/ckeditor/ckeditor.js")}},
 		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/runRichEditor.js")]
+	}),
+
+	forumNewThreadInject = pageMod.PageMod({
+		include: "http://pc.3dsplaza.com/forums/newtopic.php?forum=*",
+		contentScriptOptions: {userSett: ss.storage.settings, resourceURI: {"ckeditor": self.data.url("./inject/ckeditor/ckeditor.js")}},
+		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/runRichEditor.js")]
 	});
 
 function handleChange(state) {

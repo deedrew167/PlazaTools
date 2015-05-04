@@ -7,7 +7,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.extraPlugins = 'bbcode,plazatools';
 	config.scayt_autoStartup = true;
 
-	config.width = '70%';
+	if(!location.href.match("newtopic.php"))
+		config.width = '70%';
 
 	config.toolbarGroups = [
 		{name: 'undo'},
