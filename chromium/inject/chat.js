@@ -22,7 +22,7 @@ chrome.storage.sync.get("settings", function(i){
 	});
 
 	for(var cat in emoticons){
-		$("#ptEmoticonSelector").innerHTML += "<div class='ptEmotionSelectorCategory'>"+cat+"</div>";
+		$("#ptEmoticonSelector").innerHTML += "<hr title='"+cat+"'>";
 
 		for(var emo in emoticons[cat])
 			$("#ptEmoticonSelector").innerHTML += "<div class='ptEmoticonSelectorEmoticon' data-emoticon='"+emoticons[cat][emo].name+"' style='background-position:"+emoticons[cat][emo].pos+";width:"+emoticons[cat][emo].width+"px;height:"+emoticons[cat][emo].height+"px'></div>";

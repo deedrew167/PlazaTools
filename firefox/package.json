@@ -5,7 +5,7 @@
 	"description": "PlazaTools is an extension that adds a bunch of new features to 3DSPlaza, such as notifications, shortcuts and more.",
 	"author": "MarioErmando",
 	"license": "MPL 2.0",
-	"version": "2.4.4",
+	"version": "2.5.0",
 	"permissions": {
 		"cross-domain-content": ["http://pc.3dsplaza.com/", "http://dsi.3dsplaza.com/", "http://3dsplaza.com/", "http://ermansay.in"]
 	}
