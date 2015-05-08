@@ -49,7 +49,8 @@ var $ = function(e) { return document.querySelector(e); },
 			{"name": ":falone:", "width": 26, "height": 24, "pos": "-82px -90px", "html": '<img src="http://3dsplaza.com/chathnd/icon_foreveralone.jpg" alt="()">'},
 			{"name": ":ohplz:", "width": 17, "height": 19, "pos": "-1px -94px", "html": '<img src="http://3dsplaza.com/chathnd/please.png" alt=":ohplz:">'},
 			{"name": ":ydsay:", "width": 20, "height": 16, "pos": "-19px -94px", "html": '<img src="http://3dsplaza.com/chathnd/buy_youdontsay.png" alt=":ydsay:">'},
-			{"name": ":doge:", "width": 20, "height": 20, "pos": "-97px -69px", "html": '<img src="http://3dsplaza.com/global/chat3/i/doge.png" alt="<DOGE (not the currency)>">'}		],
+			{"name": ":doge:", "width": 20, "height": 20, "pos": "-97px -69px", "html": '<img src="http://3dsplaza.com/global/chat3/i/doge.png" alt="<DOGE (not the currency)>">'}
+		],
 		"Other": [
 			{"name": "@<3@", "width": 15, "height": 13, "pos": "-61px -114px", "html": '<img src="http://3dsplaza.com/chathnd/icon_bheart.gif" alt="[ !<3! ]">'},
 			{"name": ":yoshi:", "width": 16, "height": 16, "pos": "-1px -114px", "html": '<img src="http://3dsplaza.com/chathnd/buy_yoshi.png" alt=":yoshi:">'},
@@ -63,6 +64,7 @@ var $ = function(e) { return document.querySelector(e); },
 			{"name": ":ds:", "width": 15, "height": 15, "pos": "-1px -131px", "html": '<img src="http://3dsplaza.com/chathnd/icon_ds.gif" alt=":ds:">'},
 			{"name": ":burger:", "width": 15, "height": 15, "pos": "-17px -130px", "html": '<img src="http://3dsplaza.com/chathnd/icon_burger.gif" alt=":burger:">'},
 			{"name": ":taco:", "width": 15, "height": 15, "pos": "-33px -130px", "html": '<img src="http://3dsplaza.com/chathnd/icon_taco.gif" alt=":taco:">'},
+			{"name": ":icecream:", "width": 15, "height": 15, "pos": "-49px -130px", "html": '<img src="http://3dsplaza.com/chathnd/icon_icecream.gif" alt=":icecream:">'},
 		]
 	},
 	chatroomNames = {
