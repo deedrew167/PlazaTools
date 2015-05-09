@@ -38,6 +38,7 @@
 		{
 			"matches": ["http://pc.3dsplaza.com/chat3/nav.php*"],
 			"css": ["inject/chat-nav.css"],
+			"js": ["global.js", "inject/chat-nav.js"],
 			"all_frames": true
 		},
 		{
