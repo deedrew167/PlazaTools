@@ -2,7 +2,7 @@
 	word-wrap: break-word;
 }
 
-#ptEmoticonSelectorButton {
+#ptEmoticonSelectorButton, #ptImgurUploadButton {
 	position: absolute;
 	bottom: 11px;
 	right: 100px;
@@ -20,6 +20,19 @@
 
 #ptEmoticonSelectorButton.active {
 	background-position: -33px -1px;
+}
+
+#ptImgurUploadButton{
+	right: 117px;
+	background-position: -49px -1px;
+}
+
+#ptImgurUploadButton:hover {
+	background-position: -65px -1px;
+}
+
+#ptImgurUploadInput {
+	display: none;
 }
 
 #ptEmoticonSelector {
