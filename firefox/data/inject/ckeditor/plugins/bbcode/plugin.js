@@ -791,7 +791,7 @@
 							var src = attributes[ 'data-cke-saved-src' ] || attributes.src,
 								alt = attributes.alt;
 
-							if(style.width && style.height) // if the dimensions are set
+							if((style.width && style.height) && parseInt(style.width) + parseInt(style.height) != NaN) // if the dimensions are set
 								value = parseInt(style.width) + "x" + parseInt(style.height);
 
 							if ( src && src.indexOf( editor.config.smiley_path ) != -1 && alt )
