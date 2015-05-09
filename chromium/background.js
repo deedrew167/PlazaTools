@@ -7,10 +7,15 @@ var	chatrooms = {
 		"v3rp": 0
 	},
 	tabChatrooms = [],
-	soundPlayer = document.createElement('audio');
+	soundPlayer = document.createElement('audio'),
+	avatarLoader = document.createElement('canvas'),
+	avatarLoaderCtx = avatarLoader.getContext('2d');
 
 	soundPlayer.src = "assets/notif.ogg";
 	soundPlayer.preload = "auto";
+
+	avatarLoader.width = 80;
+	avatarLoader.height = 80;
 
 function createNotification(title, content, icon, timeout, details) {
 	var notifId = encodeURIComponent("pt_" + details.toString()),
@@ -89,7 +94,12 @@ function getAvatar(username, storage, callback) {
 			if(this.response.match(/.png'> <img style='width: 50px; height: 50px; border: 1px solid black;' src='default.png'>/)){
 				callback(storage, "");
 			}else{
-				callback(storage, avatarURL);
+				var base_image = new Image();
+				base_image.src = avatarURL;
+				base_image.onload = function(){
+					avatarLoaderCtx.drawImage(base_image, 0, 0, 80, 80);
+					callback(storage, avatarLoader.toDataURL());
+				}
 			}
 		} else {
 			callback(storage, "");
