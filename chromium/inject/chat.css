@@ -12,6 +12,7 @@
 	width: 15px;
 	height: 15px;
 	cursor: pointer;
+	z-index: 50;
 }
 
 #ptEmoticonSelectorButton:hover {
