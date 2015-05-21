@@ -28,10 +28,6 @@ chrome.storage.sync.get("settings", function(i){
 	});
 
 	$("#ptImgurUploadInput").addEventListener("change", function() {
-		if(navigator.userAgent.indexOf("Firefox") > 0){
-			alert("This feature is Chrome only.");
-			return;
-		}
 
 		var file = this.files[0],
 			fd = new FormData(),
