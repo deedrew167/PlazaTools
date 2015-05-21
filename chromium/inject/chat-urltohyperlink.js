@@ -27,8 +27,6 @@ function ptModify(data){
 	Array.prototype.forEach.call(window.parent.document.querySelectorAll(".ptImgurLinkThumbnail"), function(el){
 		el.style.display = "none";
 	});
-	if(settings.chatMentionHighlight)
-		data = data.replace(/(?:[^>\/]@)([\w~]+)/gmi, function($0, $1){ return ' <a href="http://pc.3dsplaza.com/members/view_profile.php?user=' + $1+ '" target="_blank">@' + $1 + '</a>'; });
 
 	return data;
 }
