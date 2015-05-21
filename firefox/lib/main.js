@@ -46,6 +46,7 @@ var { ToggleButton } = require('sdk/ui/button/toggle'),
 	chatNavInject = pageMod.PageMod({
 		include: "http://pc.3dsplaza.com/chat3/nav.php*",
 		contentStyleFile: self.data.url("./inject/chat-nav.css"),
+		contentScriptOptions: {userSett: ss.storage.settings},
 		contentScriptFile: [self.data.url("./global.js"), self.data.url("./inject/chat-nav.js")]
 	}),
 
