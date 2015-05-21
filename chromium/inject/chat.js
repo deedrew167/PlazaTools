@@ -43,9 +43,15 @@ chrome.storage.sync.get("settings", function(i){
 		xhr.setRequestHeader("Authorization", "Client-ID 0609f1f5d0e4a2b");
 		xhr.timeout = 60000;
 		xhr.onloadend = function() {
-			var resp = JSON.parse(xhr.responseText);
 			document.getElementById("pt_imgurUploading").remove();
 			el.value = '';
+			try {
+				var resp = JSON.parse(xhr.responseText);
+			} catch(e) {
+				alert("An error occured while uploading to Imgur.");
+				return;
+			}
+
 			if(xhr.status != 200 || resp.success == false){
 				var err = resp.data ? "\n\"" + resp.data.error + "\"" : "";
 				alert("An error occured while uploading to Imgur." + err);
@@ -70,8 +76,14 @@ chrome.storage.sync.get("settings", function(i){
 
 		document.body.insertAdjacentHTML("afterbegin", "<div id='pt_imgurUploading' style='position:fixed;z-index:99999;width:100%;height:100%;background:rgba(0,0,0,.5);color:#FFFFFF;text-shadow:0 6px rgba(0,0,0,.2);font-family:sans-serif;font-size:72px;display:flex;justify-content:center;align-items:center'>Uploading to imgur..." + 
 			"<div id='pt_imgurUploadingBar' style='position:absolute;left:0;right:0;width:40%;height:15px;margin:10px auto;background:#fff;box-shadow:0 5px rgba(0,0,0,.2)'>" +
-			"<div id='pt_imgurUploadingBarPercentage' style='width:0;height:15px;background:rgb(68,201,255);transition:width 2s'></div></div></div>");
+			"<div id='pt_imgurUploadingBarPercentage' style='width:0;height:15px;background:rgb(68,201,255);transition:width 2s'></div></div>" +
+			"<div id='pt_imgurCancelUpload' style='position:absolute;left:0;right:0;width:70px;margin:40px auto;padding:5px;font-size:18px;border:solid 2px;border-radius:5px;text-shadow:none;text-align:center;cursor:pointer'>Cancel</div></div>");
 
+		$("#pt_imgurCancelUpload").addEventListener("click", function(){
+			document.getElementById("pt_imgurUploading").remove();
+			el.value = '';
+			xhr.abort();
+		});
 	});
 
 	for(var cat in emoticons){
