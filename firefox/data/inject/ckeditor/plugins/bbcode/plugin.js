@@ -195,7 +195,10 @@
 
 					// 3dsplaza spoiler bbcode -marioermando
 					if(part == 'spoiler'){
-						attribs.spoilerTitle = optionPart;
+						if(optionPart)
+							attribs.spoilerTitle = optionPart;
+						else
+							attribs.spoilerTitle = "PT_SPOILER";
 					}
 
 					if(part == 'youtube'){
@@ -670,6 +673,9 @@
 					},
 					div: function( element ) {
 						if (element.attributes.spoilerTitle){
+							if(element.attributes.spoilerTitle == "PT_SPOILER")
+								element.attributes.spoilerTitle = "";
+
 							element.setHtml('<div class="spoiler"><div class="spoiler-title"><div class="spoiler-toggle hide-icon"></div>'+element.attributes.spoilerTitle+'</div><div class="spoiler-content"><p>'+element.getHtml().trim()+'</p></div></div>');
 						}
 					},
