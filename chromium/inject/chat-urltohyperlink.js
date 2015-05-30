@@ -12,7 +12,7 @@ function ptImgurPopupPos(e, id){
 }
 
 function ptModify(data){
-	if(data.match(/ ((?:https?:\/\/|www\.)[^\s\/$.?#].[^\s][^"|<|>| ]*)/gmi)){
+	if(data.match(/ ((?:https?:\/\/|www\.)[^\s\/$.?#<].[^\s][^"|<|>| ]*)/gmi)){
 		if(settings.chatImgurThumbnail)
 			data = data.replace(/ (?:http:\/\/i.imgur.com\/)([a-zA-Z0-9]*)(\.jpg|\.png|\.gifv?)/gmi, function($0, $1, $2){
 				var thumbnail = ($2 != ".gif" && $2 != ".gifv") ? $1 + 't' + $2 : $1 + ".gif";
@@ -22,7 +22,7 @@ function ptModify(data){
 				return ' <a href="' + $0.trim() + '" class="ptImgurLink" onmouseenter="$p(\'#ptImgurLinkThumbnail_'+$1+'\').style.display=\'block\'" onmouseleave="$p(\'#ptImgurLinkThumbnail_'+$1+'\').style.display=\'none\'" onmousemove="ptImgurPopupPos(arguments[0], \''+$1+'\')" target="_blank">' + $0.trim() + '</a>';
 			});
 		if(settings.chatURLToHyperlink)
-			data = data.replace(/ ((?:https?:\/\/)[^\s\/$.?#].[^\s][^"|<|>| ]*)/gmi, function($0){ return ' <a href="' + $0.trim() + '" target="_blank">' + $0.trim() + '</a>'; });
+			data = data.replace(/ ((?:https?:\/\/|www\.)[^\s\/$.?#<].[^\s][^"|<|>| ]*)/gmi, function($0){ return ' <a href="' + $0.trim() + '" target="_blank">' + $0.trim() + '</a>'; });
 	}
 	Array.prototype.forEach.call(window.parent.document.querySelectorAll(".ptImgurLinkThumbnail"), function(el){
 		el.style.display = "none";
