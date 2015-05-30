@@ -67,12 +67,13 @@
 
 	// Maintain the map of smiley-to-description.
 	// jscs:disable maximumLineLength
-	var smileyMap = { smiley: ':)', sad: ':(', wink: ';)', laugh: ':D', cheeky: ':P', blush: ':*)', surprise: ':-o', indecision: ':|', angry: '>:(', angel: 'o:)', cool: '8-)', devil: '>:-)', crying: ';(', kiss: ':-*' },
+	//var smileyMap = { smiley: ':)', sad: ':(', wink: ';)', laugh: ':D', cheeky: ':P', blush: ':*)', surprise: ':-o', indecision: ':|', angry: '>:(', angel: 'o:)', cool: '8-)', devil: '>:-)', crying: ';(', kiss: ':-*' },
 	// jscs:enable maximumLineLength
 		smileyReverseMap = {},
 		smileyRegExp = [];
 
 	// Build regexp for the list of smiley text.
+	/*
 	for ( var i in smileyMap ) {
 		smileyReverseMap[ smileyMap[ i ] ] = i;
 		smileyRegExp.push( smileyMap[ i ].replace( /\(|\)|\:|\/|\*|\-|\|/g, function( match ) {
@@ -81,6 +82,7 @@
 	}
 
 	smileyRegExp = new RegExp( smileyRegExp.join( '|' ), 'g' );
+	*/
 
 	var decodeHtml = ( function() {
 		var regex = [],
@@ -433,11 +435,13 @@
 						var lastIndex = 0;
 
 						// Create smiley from text emotion.
+						/*
 						piece.replace( smileyRegExp, function( match, index ) {
 							addElement( new CKEDITOR.htmlParser.text( piece.substring( lastIndex, index ) ), currentNode );
 							addElement( new CKEDITOR.htmlParser.element( 'smiley', { desc: smileyReverseMap[ match ] } ), currentNode );
 							lastIndex = index + match.length;
 						} );
+						*/
 
 						if ( lastIndex != piece.length )
 							addElement( new CKEDITOR.htmlParser.text( piece.substring( lastIndex, piece.length ) ), currentNode );
