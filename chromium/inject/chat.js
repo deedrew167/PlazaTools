@@ -27,11 +27,9 @@ chrome.storage.sync.get("settings", function(i){
 		$("#ptImgurUploadInput").click();
 	});
 
-	$("#ptImgurUploadInput").addEventListener("change", function() {
-
-		var file = this.files[0],
-			fd = new FormData(),
-			el = this;
+	var upload2Imgur = function(file){
+		var fd = new FormData(),
+			el = $("#ptImgurUploadInput");
 
 		fd.append("image", file);
 		var xhr = new XMLHttpRequest();
@@ -80,7 +78,29 @@ chrome.storage.sync.get("settings", function(i){
 			el.value = '';
 			xhr.abort();
 		});
+	};
+
+	$("#ptImgurUploadInput").addEventListener("change", function() {
+		upload2Imgur(this.files[0]);
 	});
+
+	document.onpaste = function(e){
+		var items = (e.clipboardData  || e.originalEvent.clipboardData).items;
+		var blob = null;
+		for (var i = 0; i < items.length; i++) {
+			if (items[i].type.indexOf("image") === 0) {
+				blob = items[i].getAsFile();
+			}
+		}
+
+		if (blob !== null) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				upload2Imgur(reader.result.replace(/^data:image\/(png|jpg);base64,/, ""));
+			};
+			reader.readAsDataURL(blob);
+		}
+	}
 
 	for(var cat in emoticons){
 		$("#ptEmoticonSelector").innerHTML += "<hr title='"+cat+"'>";
